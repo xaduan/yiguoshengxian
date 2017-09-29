@@ -1,5 +1,7 @@
 import $ from 'jquery'
-class Eat extends React.Component {
+import store from '../redux/store'
+import actions from '../redux/actions'
+class Xiangqing extends React.Component {
     constructor(props,context){
         super(props,context)
         this.state={
@@ -39,15 +41,15 @@ class Body extends React.Component {
     }
     render(){
         return (
-            <div className="eat">
-                {this.state.issuccess?<Componenta res={this.state.data.RspData.ArticleList.List}/>:""}
+            <div className="xiangqing">
+                {this.state.issuccess?<Componenta res={this.state.data.RspData.data.YgActivityFloors[0].ActivityFloorItems}/>:""}
             </div>            
         )
     }
     componentDidMount(){
         let that=this
         $.ajax({
-            url:"/c.json",
+            url:"/d.json",
             success(res){
                 console.log(res)                
                 that.setState({data:res})                
@@ -63,7 +65,6 @@ class Componenta extends React.Component {
         }
     }
     render(){
-        console.log(this.props.res)
         return (
             <div>
                 {this.createEle(this.props.res)}
@@ -71,23 +72,44 @@ class Componenta extends React.Component {
         )
     }
     createEle(arr){
+        let that=this
         let brr=[]
         arr.forEach((item)=>{
-            brr.push(
-                <div className="onecom">
-                    <div className="eat-img"><img src={item.PictureUrl}/></div>
-                    <h2>{item.EfruitArticleTitle}</h2>
-                    <p>{item.EfruitArticleSummary}</p>
-                    <div className="border"></div>
-                    <div className="boxitem">
-                        <div><img src={item.AuthorPicture}/>{item.Author}</div>
-                        <span>{item.PublishedTimed}</span>
+            if(item.FloorItemType==0){
+                brr.push(
+                    <div className="flex-item">
+                        <img src={item.FloorItemImgUrl}/>
                     </div>
-                </div>
-            )
+                )
+            }else if(item.FloorItemType==1){
+                brr.push(
+                    <div  className="flex-item-last">
+                        {that.createItem(item.Commoditys)}
+                    </div>
+                )
+            }
+            
         })
         return brr
     }
+    createItem(arr){
+        let brr=[]
+        var that=this
+        arr.forEach((item)=>{
+            brr.push(
+                <div className="item-box">
+                    <img src={item.SmallPic}/>
+                    <p>{item.CommodityName}</p>
+                    <p className="comp">{item.SubTitle}</p>
+                    <div className="divbox"><span>￥{item.CommodityPrice}</span><span><img src="http://img06.yiguoimg.com/e/web/160623/01634/btnbuy.jpg" onClick={that.writeId.bind(item)}/></span></div>
+                </div>
+            )            
+        })
+        return brr
+    }
+    writeId(){
+        actions.createNumber(this)
+        alert("添加成功!")
+    }
 }
-
-export default Eat
+export default Xiangqing

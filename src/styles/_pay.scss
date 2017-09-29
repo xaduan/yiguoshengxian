@@ -1,0 +1,40 @@
+.pay{
+    width: 100%;
+    height: .412rem;
+    border:1px solid gray;
+    background: #fff;
+    .carspanbox{
+        line-height: .412rem;
+        width: .634rem;
+        float: left;
+        height: 100%;
+        span{
+            color:greenyellow;
+        }
+        p{
+            display: inline;
+            font-size: .12rem;
+        }
+    }
+    .text{
+        width: 1.566rem;
+        float: left;
+        height: 100%;
+        font-size: .1rem;
+        text-align: right;
+        padding-right: .1rem;
+        p{
+            margin: 0;
+        }
+    }
+    .btn{
+        width: .92rem;
+        background: #ff6353;;
+        color: white;
+        float: right;
+        height: 100%;
+        a{
+            color: white;
+        }
+    }
+}

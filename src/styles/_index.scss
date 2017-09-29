@@ -9,12 +9,29 @@ html{
         font-family: "微软雅黑";
     }
 }
+a,a:hover,a:active,a:visited{
+    text-decoration: none;
+}
+.success,.success:active,.success:visited{
+    color:green;
+}
+.danger{
+    color:red;
+}
 .index{
     height: 100%;
     width: 100%;
     display: flex;
     flex-flow: column;
     justify-content: space-between;
+    .box{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-flow: column;
+        justify-content: space-between;
+        overflow: auto;
+    }
     .head{
         height:.32rem;
         width:100%;
@@ -50,11 +67,11 @@ html{
             }
              
         }
-    }
+    }    
     .body{
         height: 100%;
         width: 100%;
-        background: #fff;
+        overflow: auto;
     }
     .footer{
         height:.5rem;
@@ -79,7 +96,11 @@ html{
     }
 }
 .body{
+    .swiper{
+        background: #fff;
+    }
     .swiper-wrapper{
+        background: #fff;        
         width:100%;
         .swiper-slide{
             width:100%;
@@ -87,6 +108,75 @@ html{
                 padding: .12rem;
                 width: 100%;
                 box-sizing: border-box;
+            }
+        }
+    }
+    .imgbox{
+        width:100%;
+        background: #fff;
+        img{
+            box-sizing: border-box;
+            padding:0 .2rem;
+            width:100%;
+        }
+    }
+    .nav{
+        background: #fff;        
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        .navitem{
+            width: 25%;
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            img{
+                width: 50%;
+            }
+            span{
+                font-size: .1rem;
+            }
+        }
+    }
+    .contentitem{
+        background: #fff;        
+        width: 100%;
+        display: flex;
+        flex-flow: column;
+        font-size: .1rem;
+        margin: .1rem 0;
+        .imgbox{
+            width: 100%;
+            box-sizing: border-box;
+            padding:0 0.1rem;
+        }
+        .border{
+            height: 1px;
+            transform: scaleY(0.5);
+            background: #e7e7e7;
+        }
+        .itemswiper{
+            width: 100%;
+            box-sizing: border-box;
+            padding:0  0.1rem;
+            .swiper-wrapper{  
+                width: 30%;
+                display: flex;
+                flex-flow: row;
+                align-items: center;
+                .item-box{                                         
+                    img{
+                        width: 100%;
+                    }
+                }
+                p{
+                    width: 100%;
+                    text-align: center;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    padding: 0rem 0.1rem;
+                }               
             }
         }
     }
